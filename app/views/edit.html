@@ -1,0 +1,23 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li><a ng-href="#">add</a></li>
+    <li class="active"><a ng-href="#/edit">edit</a></li>
+    <li><a ng-href="#/dump">export</a></li>
+
+  </ul>
+  <h3 class="text-muted">Current Interventions</h3>
+</div>
+
+
+
+<div class="row marketing">
+<table><tr ng-repeat="intervention in currentInterventions">
+	<td><a ng-href="#/editIntervention/{{intervention.guid}}" class="btn btn-info">edit</a></td><td>
+	{{intervention.content[0]}}</td><td>{{intervention.contentArea}}</td><td>{{intervention}}</td>
+
+</tr>
+</table>
+
+</div>
+
+</div>

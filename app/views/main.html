@@ -1,0 +1,63 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">add</a></li>
+    <li><a ng-href="#/edit">edit</a></li>
+    <li><a ng-href="#/dump">export</a></li>
+
+  </ul>
+  <h3 class="text-muted">Intervention Generator</h3>
+</div>
+
+
+
+<div class="row marketing">
+
+<h3>Intervention Section</h3>
+
+<form id="intervention">
+<div class="well">
+ <select name="contentArea"><option value="">not selected</option><option ng-repeat="contentArea in contentAreas" value='{{contentArea}}'>{{contentArea}}</select>
+<select  name="response_section"><option value="">not selected</option><option ng-repeat="levelName in levelNames" value='{{levelName.order}}'>{{levelName.order}} {{levelName.label}}</option></select>
+</div>
+
+<h3>To get here, the user needed to select:</h3>
+
+<div class="well">
+<div ng-repeat="responseLevel in responseLevels">
+<!--Level {{responseLevel}}-->
+ <select name="response_sent_from_level_{{responseLevel}}"><option value="">not selected</option><option ng-repeat="allowedResponse in allowedResponses" value='{{allowedResponse.order}}'>
+  {{allowedResponse.label}}</option>
+</select>
+in 
+ <select  name="response_section_from_level_{{responseLevel}}"><option value="">not selected</option><option ng-repeat="levelName in levelNames" value='{{levelName.order}}'>{{levelName.order}} {{levelName.label}}</option></select>
+</div>
+</div>
+
+
+<h3>Intervention Question or Statement</h3>
+<div class="well">
+<div id="content">
+</div>
+<button class="btn btn-info" ng-click="addTextField('content')">+ Add Question/Content</button>
+</div>
+
+<h3>Responses</h3>
+<div class="well">
+
+<div ng-repeat="allowedResponse in allowedResponses" id='allowedResponse{{allowedResponse.order}}'>
+<label>{{allowedResponse.label}}</label>
+<input type="text" name="allowedResponseCategory{{allowedResponse.order}}" placeholder="label this category"><br/><div class="well">
+<div id="response{{allowedResponse.order}}">
+</div>
+<button class="btn btn-info" ng-click="addTextField('response'+ allowedResponse.order,'label this category')">+ Add Response</button></div>
+
+</div>
+</div>
+
+<button class="btn btn-primary" ng-click="addIntervention('intervention')">+ Add Intervention</button>
+
+</div>
+</form>
+<div class="footer">
+  <p>♥ from CBITs</p>
+</div>
